@@ -6,6 +6,8 @@
 \uploader{Joris Pinkse}
 \ctanPath{/macros/luatex/latex/luaaccents}
 \license{lppl1.3c}
+\repository{https://github.com/NittanyLion/luaaccents}
+\bugtracker{https://github.com/NittanyLion/luaaccents/issues}
 \update{false}
 \topic{luatex}
 \topic{maths}

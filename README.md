@@ -26,6 +26,9 @@ The rewriting is active from that point on. `\LuaAccentsOff` and
 See `luaaccents-doc.pdf` for the full list of supported combining
 characters and some caveats.
 
+Development happens at <https://github.com/NittanyLion/luaaccents>;
+please report bugs there.
+
 ## Installation
 
 The package is contained in `luaaccents.sty` and `luaaccents.lua`; both
