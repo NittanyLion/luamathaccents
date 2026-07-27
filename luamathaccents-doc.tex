@@ -1,8 +1,8 @@
-% luaaccents-doc.tex
-% Documentation for the luaaccents package.
+% luamathaccents-doc.tex
+% Documentation for the luamathaccents package.
 % Copyright 2026 Joris Pinkse
 % Distributed under the LaTeX Project Public License v1.3c or later.
-% Compile with: lualatex luaaccents-doc.tex
+% Compile with: lualatex luamathaccents-doc.tex
 \documentclass{article}
 \usepackage{geometry}
 \usepackage{unicode-math}
@@ -20,9 +20,9 @@
 \usepackage{booktabs}
 \usepackage{longtable}
 \usepackage{hyperref}
-\usepackage{luaaccents}
+\usepackage{luamathaccents}
 
-\title{The \textsf{luaaccents} package\\[1ex]
+\title{The \textsf{luamathaccents} package\\[1ex]
   \large Unicode combining accents in math input, v1.0}
 \author{Joris Pinkse\\\texttt{pinkse@gmail.com}}
 \date{2026/07/26}
@@ -48,15 +48,15 @@ Load the package in the preamble of a document compiled with
 \texttt{lualatex}:
 
 \begin{verbatim}
-\usepackage{luaaccents}
+\usepackage{luamathaccents}
 \end{verbatim}
 
 The rewriting is active from that point on.  Two commands control it:
 
 \begin{description}
-  \item[\texttt{\textbackslash LuaAccentsOff}] stop rewriting input
+  \item[\texttt{\textbackslash LuaMathAccentsOff}] stop rewriting input
     lines (takes effect from the next input line);
-  \item[\texttt{\textbackslash LuaAccentsOn}] resume rewriting.
+  \item[\texttt{\textbackslash LuaMathAccentsOn}] resume rewriting.
 \end{description}
 
 Most of the generated commands are the classic math accents
@@ -68,12 +68,12 @@ with \LuaTeX{}, loading \textsf{unicode-math} is recommended anyway.
 
 \section{Example}
 
-\LuaAccentsOff
+\LuaMathAccentsOff
 The input
 \begin{verbatim}
 $x̂ + ỹ = z̄$, force $F⃗ = m a⃗$, and average $v̄$.
 \end{verbatim}
-\LuaAccentsOn
+\LuaMathAccentsOn
 is typeset as
 \begin{quote}
 $x̂ + ỹ = z̄$, force $F⃗ = m a⃗$, and average $v̄$.
@@ -126,7 +126,7 @@ Commands marked \textsuperscript{*} are provided by
   \item The rewriting operates on \emph{every} input line, in text
     mode as well as math mode, and also inside \texttt{verbatim}
     material, since it happens before TeX tokenizes the line.  Use
-    \verb|\LuaAccentsOff| around text where combining characters must
+    \verb|\LuaMathAccentsOff| around text where combining characters must
     be left alone.
   \item Only \emph{combining} sequences (Unicode normalization form
     NFD) are recognized.  Precomposed characters such as

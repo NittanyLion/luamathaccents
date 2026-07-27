@@ -1,4 +1,4 @@
-%% luaaccents.sty
+%% luamathaccents.sty
 %% Copyright 2026 Joris Pinkse
 %
 % This work may be distributed and/or modified under the
@@ -12,16 +12,16 @@
 % This work has the LPPL maintenance status `maintained'.
 % The Current Maintainer of this work is Joris Pinkse.
 %
-% This work consists of the files luaaccents.sty, luaaccents.lua,
-% luaaccents-doc.tex and the derived file luaaccents-doc.pdf.
+% This work consists of the files luamathaccents.sty, luamathaccents.lua,
+% luamathaccents-doc.tex and the derived file luamathaccents-doc.pdf.
 %
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesPackage{luaaccents}%
+\ProvidesPackage{luamathaccents}%
   [2026/07/26 v1.0 Unicode combining accents in math input (LuaTeX)]
 \RequirePackage{iftex}
 \RequireLuaTeX
-\directlua{require("luaaccents")}
-\newcommand*\LuaAccentsOn{\directlua{luaaccents.enable()}}
-\newcommand*\LuaAccentsOff{\directlua{luaaccents.disable()}}
-\LuaAccentsOn
+\directlua{require("luamathaccents")}
+\newcommand*\LuaMathAccentsOn{\directlua{luamathaccents.enable()}}
+\newcommand*\LuaMathAccentsOff{\directlua{luamathaccents.disable()}}
+\LuaMathAccentsOn
 \endinput

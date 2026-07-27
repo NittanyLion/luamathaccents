@@ -1,19 +1,19 @@
-% ctan-o-mat description file for the luaaccents package.
-\pkg{luaaccents}
+% ctan-o-mat description file for the luamathaccents package.
+\pkg{luamathaccents}
 \version{1.0}
 \author{Joris Pinkse}
 \email{pinkse@gmail.com}
 \uploader{Joris Pinkse}
-\ctanPath{/macros/luatex/latex/luaaccents}
+\ctanPath{/macros/luatex/latex/luamathaccents}
 \license{lppl1.3c}
-\repository{https://github.com/NittanyLion/luaaccents}
-\bugtracker{https://github.com/NittanyLion/luaaccents/issues}
+\repository{https://github.com/NittanyLion/luamathaccents}
+\bugtracker{https://github.com/NittanyLion/luamathaccents/issues}
 \update{false}
 \topic{luatex}
 \topic{maths}
 \topic{unicode}
 \begin{announcement}
-luaaccents lets you type accented mathematical symbols directly in
+luamathaccents lets you type accented mathematical symbols directly in
 your source file using Unicode combining characters. With the package
 loaded, the two-character sequence "x" + U+0302 (combining circumflex
 accent) -- which your editor displays as an accented letter -- is
@@ -36,6 +36,8 @@ process_input_buffer callback and therefore requires LuaLaTeX. Some of
 the rarer generated commands are provided by unicode-math.
 \end{description}
 \begin{note}
-First release of this package.
+First release. This replaces my earlier upload of the same package
+under the name "luaaccents", renamed to "luamathaccents" at the
+request of the CTAN reviewer.
 \end{note}
-\file{luaaccents.zip}
+\file{luamathaccents.zip}

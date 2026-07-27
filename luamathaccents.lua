@@ -1,4 +1,4 @@
--- luaaccents.lua
+-- luamathaccents.lua
 -- Copyright 2026 Joris Pinkse
 --
 -- This work may be distributed and/or modified under the
@@ -7,13 +7,13 @@
 -- The latest version of this license is in
 --   https://www.latex-project.org/lppl.txt
 --
--- Part of the luaaccents package; see luaaccents.sty for details.
+-- Part of the luamathaccents package; see luamathaccents.sty for details.
 --
 -- Rewrites input lines so that a Unicode combining character following a
 -- base character becomes the corresponding TeX accent command, e.g. the
 -- two characters "x" + U+0302 (combining circumflex) become "\hat x".
 
-luaaccents = luaaccents or {}
+luamathaccents = luamathaccents or {}
 
 -- Combining character -> accent command.  Commands beyond the classic
 -- TeX/LaTeX math accents (\ovhook, \candra, \oturnedcomma, ...) are
@@ -80,14 +80,14 @@ end
 
 local enabled = false
 
-function luaaccents.enable()
+function luamathaccents.enable()
   if enabled then return end
-  luatexbase.add_to_callback("process_input_buffer", process, "luaaccents")
+  luatexbase.add_to_callback("process_input_buffer", process, "luamathaccents")
   enabled = true
 end
 
-function luaaccents.disable()
+function luamathaccents.disable()
   if not enabled then return end
-  luatexbase.remove_from_callback("process_input_buffer", "luaaccents")
+  luatexbase.remove_from_callback("process_input_buffer", "luamathaccents")
   enabled = false
 end
