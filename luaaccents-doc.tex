@@ -1,0 +1,150 @@
+% luaaccents-doc.tex
+% Documentation for the luaaccents package.
+% Copyright 2026 Joris Pinkse
+% Distributed under the LaTeX Project Public License v1.3c or later.
+% Compile with: lualatex luaaccents-doc.tex
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{unicode-math}
+% STIX Two Math and JuliaMono cover all the combining characters and
+% accent glyphs shown in this documentation (the defaults, Latin Modern
+% Math and Latin Modern Mono, miss a few of the rarer ones).  Both ship
+% with TeX Live; if unavailable, compilation still succeeds but some
+% glyphs come out blank.
+\IfFontExistsTF{STIXTwoMath-Regular.otf}
+  {\setmathfont{STIXTwoMath-Regular.otf}}{}
+\IfFontExistsTF{JuliaMono-Regular.ttf}
+  {\setmonofont{JuliaMono-Regular.ttf}%
+     [Scale=MatchLowercase, BoldFont=JuliaMono-Bold.ttf]}{}
+\usepackage{metalogo}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{hyperref}
+\usepackage{luaaccents}
+
+\title{The \textsf{luaaccents} package\\[1ex]
+  \large Unicode combining accents in math input, v1.0}
+\author{Joris Pinkse\\\texttt{pinkse@gmail.com}}
+\date{2026/07/26}
+
+\begin{document}
+\maketitle
+
+\section{Introduction}
+
+Modern editors and input methods make it easy to type accented
+mathematical symbols directly, using Unicode \emph{combining
+characters}.  For instance, typing \texttt{x\textbackslash hat}
+followed by \texttt{Tab} in VS~Code (with the Julia or Unicode Latex
+extension) shows an $x$ with a hat on top.  However, \LaTeX{} does not
+interpret this combination correctly.
+
+What this package does is to make \LaTeX{} interpret an accented
+character in the source correctly.  This package requires \LuaLaTeX{}.
+
+\section{Usage}
+
+Load the package in the preamble of a document compiled with
+\texttt{lualatex}:
+
+\begin{verbatim}
+\usepackage{luaaccents}
+\end{verbatim}
+
+The rewriting is active from that point on.  Two commands control it:
+
+\begin{description}
+  \item[\texttt{\textbackslash LuaAccentsOff}] stop rewriting input
+    lines (takes effect from the next input line);
+  \item[\texttt{\textbackslash LuaAccentsOn}] resume rewriting.
+\end{description}
+
+Most of the generated commands are the classic math accents
+(\verb|\hat|, \verb|\tilde|, \verb|\vec|, \ldots).  A number of the
+rarer ones (\verb|\ovhook|, \verb|\candra|, \verb|\annuity|, \ldots)
+are provided by the \textsf{unicode-math} package, which you should
+load if you use those characters.  Since you are already compiling
+with \LuaTeX{}, loading \textsf{unicode-math} is recommended anyway.
+
+\section{Example}
+
+\LuaAccentsOff
+The input
+\begin{verbatim}
+$x̂ + ỹ = z̄$, force $F⃗ = m a⃗$, and average $v̄$.
+\end{verbatim}
+\LuaAccentsOn
+is typeset as
+\begin{quote}
+$x̂ + ỹ = z̄$, force $F⃗ = m a⃗$, and average $v̄$.
+\end{quote}
+
+\section{Supported combining characters}
+
+\begin{longtable}{llll}
+\toprule
+Code & Unicode name (\textsc{combining} \ldots) & Command & Result\\
+\midrule
+\endhead
+\texttt{U+0300} & grave accent & \verb|\grave| & $\grave{x}$\\
+\texttt{U+0301} & acute accent & \verb|\acute| & $\acute{x}$\\
+\texttt{U+0302} & circumflex accent & \verb|\hat| & $\hat{x}$\\
+\texttt{U+0303} & tilde & \verb|\tilde| & $\tilde{x}$\\
+\texttt{U+0304} & macron & \verb|\bar| & $\bar{x}$\\
+\texttt{U+0305} & overline & \verb|\bar| & $\bar{x}$\\
+\texttt{U+0306} & breve & \verb|\breve| & $\breve{x}$\\
+\texttt{U+0307} & dot above & \verb|\dot| & $\dot{x}$\\
+\texttt{U+0308} & diaeresis & \verb|\ddot| & $\ddot{x}$\\
+\texttt{U+0309} & hook above & \verb|\ovhook|\textsuperscript{*} & $\ovhook{x}$\\
+\texttt{U+030A} & ring above & \verb|\ocirc|\textsuperscript{*} & $\ocirc{x}$\\
+\texttt{U+030C} & caron & \verb|\check| & $\check{x}$\\
+\texttt{U+0310} & candrabindu & \verb|\candra|\textsuperscript{*} & $\candra{x}$\\
+\texttt{U+0312} & turned comma above & \verb|\oturnedcomma|\textsuperscript{*} & $\oturnedcomma{x}$\\
+\texttt{U+0315} & comma above right & \verb|\ocommatopright|\textsuperscript{*} & $\ocommatopright{x}$\\
+\texttt{U+031A} & left angle above & \verb|\droang|\textsuperscript{*} & $\droang{x}$\\
+\texttt{U+0331} & macron below & \verb|\underline| & $\underline{x}$\\
+\texttt{U+20D0} & left harpoon above & \verb|\leftharpoonaccent|\textsuperscript{*} & $\leftharpoonaccent{x}$\\
+\texttt{U+20D1} & right harpoon above & \verb|\rightharpoonaccent|\textsuperscript{*} & $\rightharpoonaccent{x}$\\
+\texttt{U+20D6} & left arrow above & \verb|\overleftarrow| & $\overleftarrow{x}$\\
+\texttt{U+20D7} & right arrow above & \verb|\vec| & $\vec{x}$\\
+\texttt{U+20DB} & three dots above & \verb|\dddot|\textsuperscript{*} & $\dddot{x}$\\
+\texttt{U+20E1} & left right arrow above & \verb|\overleftrightarrow|\textsuperscript{*} & $\overleftrightarrow{x}$\\
+\texttt{U+20E7} & annuity symbol & \verb|\annuity|\textsuperscript{*} & $\annuity{x}$\\
+\texttt{U+20E9} & wide bridge above & \verb|\widebridgeabove|\textsuperscript{*} & $\widebridgeabove{x}$\\
+\texttt{U+20F0} & asterisk above & \verb|\asteraccent|\textsuperscript{*} & $\asteraccent{x}$\\
+\bottomrule
+\end{longtable}
+
+\noindent
+Commands marked \textsuperscript{*} are provided by
+\textsf{unicode-math} (or, for \verb|\dddot|, also by
+\textsf{amsmath}).
+
+\section{Caveats}
+
+\begin{itemize}
+  \item The rewriting operates on \emph{every} input line, in text
+    mode as well as math mode, and also inside \texttt{verbatim}
+    material, since it happens before TeX tokenizes the line.  Use
+    \verb|\LuaAccentsOff| around text where combining characters must
+    be left alone.
+  \item Only \emph{combining} sequences (Unicode normalization form
+    NFD) are recognized.  Precomposed characters such as
+    \texttt{U+0227} (\textsc{latin small letter a with dot above}) are
+    a single codepoint and pass through unchanged.
+  \item A combining character with no preceding base character on the
+    same line is passed through unchanged.
+  \item Only one accent per base character is converted; in a sequence
+    of several combining characters, the ones after the first are
+    passed through unchanged (whether they produce any output then
+    depends on the font).
+\end{itemize}
+
+\section{License}
+
+Copyright 2026 Joris Pinkse.  This work may be distributed and/or
+modified under the conditions of the \LaTeX{} Project Public License,
+either version~1.3c of this license or (at your option) any later
+version (\url{https://www.latex-project.org/lppl.txt}).
+
+\end{document}

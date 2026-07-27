@@ -1,0 +1,39 @@
+% ctan-o-mat description file for the luaaccents package.
+\pkg{luaaccents}
+\version{1.0}
+\author{Joris Pinkse}
+\email{pinkse@gmail.com}
+\uploader{Joris Pinkse}
+\ctanPath{/macros/luatex/latex/luaaccents}
+\license{lppl1.3c}
+\update{false}
+\topic{luatex}
+\topic{maths}
+\topic{unicode}
+\begin{announcement}
+luaaccents lets you type accented mathematical symbols directly in
+your source file using Unicode combining characters. With the package
+loaded, the two-character sequence "x" + U+0302 (combining circumflex
+accent) -- which your editor displays as an accented letter -- is
+rewritten on input to "\hat x", and likewise for two dozen other
+combining characters (grave, acute, tilde, macron, breve, dot,
+diaeresis, caron, vector arrow, harpoons, and more).
+
+The package uses LuaTeX's process_input_buffer callback and therefore
+requires LuaLaTeX. This is the first release.
+\end{announcement}
+\summary{Use Unicode combining accents in math input with LuaLaTeX}
+\begin{description}
+The package lets you type accented mathematical symbols directly in
+your source file using Unicode combining characters. With the package
+loaded, a base character followed by a supported combining character
+(for instance "x" + U+0302, combining circumflex accent) is rewritten
+on input to the corresponding accent command (\hat x), and likewise
+for two dozen other combining characters. The package uses LuaTeX's
+process_input_buffer callback and therefore requires LuaLaTeX. Some of
+the rarer generated commands are provided by unicode-math.
+\end{description}
+\begin{note}
+First release of this package.
+\end{note}
+\file{luaaccents.zip}
